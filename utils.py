@@ -72,7 +72,24 @@ def df_rec_mensal(df: pd.DataFrame) -> pd.DataFrame:
     )
     df_mensal["Ano"] = df_mensal["Data da Compra"].dt.year
     df_mensal["Mes"] = df_mensal["Data da Compra"].dt.month
-    df_mensal["Mes_nome"] = df_mensal["Data da Compra"].dt.month_name(locale="pt_BR")
+
+    meses_pt = {
+        1: "Jan",
+        2: "Fev",
+        3: "Mar",
+        4: "Abr",
+        5: "Mai",
+        6: "Jun",
+        7: "Jul",
+        8: "Ago",
+        9: "Set",
+        10: "Out",
+        11: "Nov",
+        12: "Dez",
+    }
+
+    df_mensal["Mes_nome"] = df_mensal["Mes"].map(meses_pt)
+
     return df_mensal
 
 
